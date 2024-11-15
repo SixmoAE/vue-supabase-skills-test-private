@@ -38,3 +38,6 @@ The application has tests. However, they aren't production ready. Provide testin
 1. There should be no lint errors when running `npm run lint`.
 2. There should be no type errors when running `npm run type-check`.
 3. There should be no type errors when running `npm run test`.
+
+## Submission
+Once you are done with the exam, bundle all of it in a .zip file and submit it to your contact person.
