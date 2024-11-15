@@ -31,7 +31,7 @@ Given the experience you have as a developer, make adjustments to the user exper
 ### III. Improve code quality
 Given the experience you have as a developer, make adjustments to the code applying principles such as SOLID, DRY, and general TypeScript practices to improve the application overall. Provide reasoning for every improvement. Provide reasoning for every change in the form of a comment.
 
-#### IV. Advocate for Testing
+### IV. Advocate for Testing
 The application has tests. However, they aren't production ready. Provide testing as you see fit. Please note we do not expect full coverage of testing, a few examples would be enough.
 
 ### IV. No Errors
