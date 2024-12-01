@@ -86,6 +86,69 @@ export const useAuthStore = defineStore("auth", () => {
         }
     };
 
+    // Added createProfile() function to create a profile for the user.
+    const createProfile = async (userId: string, email: string, firstName: string, lastName: string) => {
+        const { data, error } = await supabase
+            .from("profiles")
+            .insert([
+                {
+                    id: userId,
+                    email,
+                    first_name: firstName,
+                    last_name: lastName,
+                },
+            ])
+            .select()
+            .single();
+
+        return { data, error };
+    };
+
+    // CHANGE: Added registerUser() function to handle user registration + profile creation
+    const signUpWithProfile = async ({
+        email,
+        password,
+        firstName,
+        lastName,
+    }: {
+        email: string;
+        password: string;
+        firstName: string;
+        lastName: string;
+    }) => {
+        // NOTE: Use database transaction to ensure both user and profile are created successfully
+        // We can use supabase.rpc() to call a stored procedure that creates both user and profile in a single transaction
+
+        // Step 1: Sign up the user
+        const { data: userData, error: signUpError } = await signUp({ email, password });
+
+        if (signUpError || !userData?.user) {
+            return {
+                data: null,
+                error: signUpError || new Error("User signup failed"),
+            };
+        }
+
+        // Step 2: Create a profile for the user
+        const { data: profileData, error: profileError } = await createProfile(userData.user.id, email, firstName, lastName);
+
+        if (profileError || !profileData) {
+            return {
+                data: null,
+                error: profileError || new Error("Profile creation failed"),
+            };
+        }
+
+        // Return both user and profile data
+        return {
+            data: {
+                ...userData.user,
+                ...profileData,
+            },
+            error: null,
+        };
+    };
+
     return {
         // Setters
         setUser,
@@ -95,9 +158,10 @@ export const useAuthStore = defineStore("auth", () => {
         getUser,
 
         // Actions
+        // CHANGE: Removed signUp() function as we only want to expose signUpWithProfile()
         fetchProfile,
         signInWithPassword,
         signOut,
-        signUp,
+        signUpWithProfile,
     };
 });

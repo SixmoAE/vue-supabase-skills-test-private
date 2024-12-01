@@ -27,10 +27,10 @@ const props = defineProps<{
 
         <div class="flex flex-1 flex-col justify-center bg-white px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
             <div class="mx-auto w-full max-w-sm lg:w-96">
+                <!-- CHANGE: Removed the link to login page -->
+                <!-- It might be confusing especially for users registering -->
                 <div class="mb-6">
-                    <RouterLink :to="{ path: '/' }" variant="link">
-                        <img class="h-10 w-auto" src="./../../../assets/images/logo.svg" />
-                    </RouterLink>
+                    <img class="h-10 w-auto" src="./../../../assets/images/logo.svg" />
                 </div>
 
                 <slot />
