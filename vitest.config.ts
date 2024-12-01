@@ -11,6 +11,7 @@ export default mergeConfig(
             include: ["**/*.vitest.ts"], // All vitest files
             exclude: [...configDefaults.exclude, "e2e/**"], // Exclude e2e
             root: fileURLToPath(new URL("./", import.meta.url)),
+            globals: true,
         },
     }),
 );

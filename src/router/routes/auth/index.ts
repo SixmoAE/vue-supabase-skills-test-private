@@ -18,6 +18,16 @@ export default [
                     title: () => "Login",
                 },
             },
+            // new registration route
+            {
+                path: "/register",
+                name: "auth.register",
+                component: () => import("@/views/auth/RegisterPage.vue"),
+                meta: {
+                    auth: "block",
+                    title: () => "Register",
+                },
+            },
             {
                 path: "/logout",
                 name: "auth.logout",
