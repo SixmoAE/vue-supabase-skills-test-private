@@ -12,10 +12,19 @@ export default [
             {
                 path: "/login",
                 name: "auth.login",
-                component: () => import("@/views/auth/LoginPage.vue"),
+                component: () => import("@/views/auth/Login/index.vue"),
                 meta: {
                     auth: "block",
                     title: () => "Login",
+                },
+            },
+            {
+                path: "/signup",
+                name: "auth.signup",
+                component: () => import("@/views/auth/SignUp/index.vue"),
+                meta: {
+                    auth: "block",
+                    title: () => "Sign Up",
                 },
             },
             {

@@ -12,6 +12,7 @@
         }
     ],
     "compilerOptions": {
-        "types": []
+        "types": [],
+        "experimentalDecorators": true,
     }
 }

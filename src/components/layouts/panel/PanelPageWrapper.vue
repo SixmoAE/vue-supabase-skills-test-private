@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Panel } from ".";
 
-import { useAuthStore } from "@/stores/auth";
+import { useAuthStore } from "@/stores/Auth";
 import { onMounted, ref } from "vue";
 import { RouterView } from "vue-router";
 

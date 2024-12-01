@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Loader } from "lucide-vue-next";
 
-import { useAuthStore } from "@/stores/auth";
+import { useAuthStore } from "@/stores/Auth";
 import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
